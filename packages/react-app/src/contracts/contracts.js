@@ -1,1 +1,1 @@
-module.exports = ["YourContract"];
+module.exports = ["DittoMachine","TestCoin","TestCoin2","TestNFT"];

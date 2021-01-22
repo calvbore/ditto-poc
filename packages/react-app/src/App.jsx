@@ -12,7 +12,7 @@ import { Header, Account, Faucet, Ramp, Contract, GasGauge } from "./components"
 import { Transactor } from "./helpers";
 import { formatEther } from "@ethersproject/units";
 //import Hints from "./Hints";
-import { Hints, ExampleUI, Subgraph } from "./views"
+import { Hints, ExampleUI, Subgraph, TestDittoUI, NewDittoUI } from "./views"
 /*
     Welcome to 🏗 scaffold-eth !
 
@@ -94,12 +94,12 @@ function App(props) {
 
 
   // keep track of a variable from the contract in the local React state:
-  const purpose = useContractReader(readContracts,"YourContract", "purpose")
-  console.log("🤗 purpose:",purpose)
+  // const purpose = useContractReader(readContracts,"DittoMachine", "purpose")
+  // console.log("🤗 purpose:",purpose)
 
   //📟 Listen for broadcast events
-  const setPurposeEvents = useEventListener(readContracts, "YourContract", "SetPurpose", localProvider, 1);
-  console.log("📟 SetPurpose events:",setPurposeEvents)
+  // const setPurposeEvents = useEventListener(readContracts, "DittoMachine", "SetPurpose", localProvider, 1);
+  // console.log("📟 SetPurpose events:",setPurposeEvents)
 
   /*
   const addressFromENS = useResolveName(mainnetProvider, "austingriffith.eth");
@@ -132,14 +132,26 @@ function App(props) {
 
         <Menu style={{ textAlign:"center" }} selectedKeys={[route]} mode="horizontal">
           <Menu.Item key="/">
-            <Link onClick={()=>{setRoute("/")}} to="/">YourContract</Link>
+            <Link onClick={()=>{setRoute("/")}} to="/">DittoMachine</Link>
+          </Menu.Item>
+          <Menu.Item key="/testCoin">
+            <Link onClick={()=>{setRoute("/testCoin")}} to="/testCoin">TestCoin</Link>
+          </Menu.Item>
+          <Menu.Item key="/testNFT">
+            <Link onClick={()=>{setRoute("/testNFT")}} to="/testNFT">TestNFT</Link>
+          </Menu.Item>
+          <Menu.Item key="/newDittoUI">
+            <Link onClick={()=>{setRoute("/newDittoUI")}} to="/newDittoUI">NewDittoUI</Link>
+          </Menu.Item>
+          <Menu.Item key="/testDittoUI">
+            <Link onClick={()=>{setRoute("/testDittoUI")}} to="/testDittoUI">TestDittoUI</Link>
           </Menu.Item>
           <Menu.Item key="/hints">
             <Link onClick={()=>{setRoute("/hints")}} to="/hints">Hints</Link>
           </Menu.Item>
-          <Menu.Item key="/exampleui">
+          {/*<Menu.Item key="/exampleui">
             <Link onClick={()=>{setRoute("/exampleui")}} to="/exampleui">ExampleUI</Link>
-          </Menu.Item>
+          </Menu.Item>*/}
           <Menu.Item key="/subgraph">
             <Link onClick={()=>{setRoute("/subgraph")}} to="/subgraph">Subgraph</Link>
           </Menu.Item>
@@ -153,7 +165,7 @@ function App(props) {
                 and give you a form to interact with it locally
             */}
             <Contract
-              name="YourContract"
+              name="DittoMachine"
               signer={userProvider.getSigner()}
               provider={localProvider}
               address={address}
@@ -171,6 +183,46 @@ function App(props) {
             />
             */ }
           </Route>
+          <Route path="/testCoin">
+            <Contract
+              name="TestCoin"
+              signer={userProvider.getSigner()}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+            />
+          </Route>
+          <Route path="/testNFT">
+            <Contract
+              name="TestNFT"
+              signer={userProvider.getSigner()}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+            />
+          </Route>
+          <Route path="/newDittoUI">
+            <NewDittoUI
+              address={address}
+              userProvider={userProvider}
+              mainnetProvider={mainnetProvider}
+              localProvider={localProvider}
+              tx={tx}
+              writeContracts={writeContracts}
+              readContracts={readContracts}
+            />
+          </Route>
+          <Route path="/testDittoUI">
+            <TestDittoUI
+              address={address}
+              userProvider={userProvider}
+              mainnetProvider={mainnetProvider}
+              localProvider={localProvider}
+              tx={tx}
+              writeContracts={writeContracts}
+              readContracts={readContracts}
+            />
+          </Route>
           <Route path="/hints">
             <Hints
               address={address}
@@ -179,7 +231,7 @@ function App(props) {
               price={price}
             />
           </Route>
-          <Route path="/exampleui">
+          {/*<Route path="/exampleui">
             <ExampleUI
               address={address}
               userProvider={userProvider}
@@ -193,7 +245,7 @@ function App(props) {
               purpose={purpose}
               setPurposeEvents={setPurposeEvents}
             />
-          </Route>
+          </Route>*/}
           <Route path="/subgraph">
             <Subgraph
             subgraphUri={props.subgraphUri}
