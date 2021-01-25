@@ -11,7 +11,7 @@ const main = async () => {
 
   const dittoMachine = await deploy("DittoMachine") // <-- add in constructor args like line 16 vvvv
   const testCoin = await deploy("TestCoin");
-  const testCoin2 = await deploy("TestCoin2");
+  // const testCoin2 = await deploy("TestCoin2");
   const testNFT = await deploy("TestNFT");
 
 

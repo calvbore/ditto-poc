@@ -49,11 +49,11 @@ export default function TokenSelector({address, ERC20Address, setERC20Address, u
             >
               <span class="token-symbol"> TSTC</span>
             </Option>
-            <Option
+            {/*<Option
               value={require("./../contracts/TestCoin2.address.js")}
             >
               <span class="token-symbol"> TSTC2</span>
-            </Option>
+            </Option>*/}
             {tokenList.isLoading ? <Option>Loading...</Option> : tokenList.data.tokens.map((data, index) => {
               return (
                 <Option
