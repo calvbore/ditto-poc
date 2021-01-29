@@ -1,4 +1,4 @@
-# 🐙 ditto-poc 
+# 🐙 ditto-poc
 
 ---
 
@@ -25,7 +25,7 @@ yarn start
 in a second terminal window:
 
 ```bash
-
+cd scaffold-eth
 yarn chain
 
 ```
